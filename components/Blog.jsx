@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card} from 'antd'
-
+import Link from 'next/link'
 
 const Blog = ({data}) => {
   return (
@@ -9,9 +9,14 @@ const Blog = ({data}) => {
 
 {
   data.map((item, index)=>{
-    return <Card key={index} hoverable>
+    
+    return <Link key={index} href={`/blog/${item.title.split(" ").join("-")}`}>
+    <Card  hoverable>
+
+
 <h1 className='capitalize  text-lg '>{item.title}</h1>
     </Card>
+</Link>
   })
 }
 
