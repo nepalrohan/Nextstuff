@@ -8,9 +8,12 @@ export const revalidate = 86400;
 const BlogRoute = async () => {
 
 
-  const blog = await fetch(`http://localhost:3000/api/blog`);
-
-  const data = await blog.json();
+  const blog = await fetch(`${process.env.SERVER}/api/blog`);
+let data = [];
+if(!blog.ok){
+  data=[]
+}
+   data = await blog.json();
   return  <Blog  data={data} />
   
 }
